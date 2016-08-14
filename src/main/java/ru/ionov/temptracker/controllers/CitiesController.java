@@ -7,7 +7,7 @@ import ru.ionov.temptracker.domain.City;
 import ru.ionov.temptracker.repositories.CitiesRepository;
 
 @RestController
-@RequestMapping("/cities")
+@RequestMapping("/api/cities")
 public class CitiesController
 {
     @Autowired

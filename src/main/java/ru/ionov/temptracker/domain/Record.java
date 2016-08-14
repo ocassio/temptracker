@@ -13,7 +13,7 @@ public class Record
 {
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "city_id")
@@ -37,12 +37,12 @@ public class Record
         this.temperature = temperature;
     }
 
-    public int getId()
+    public Integer getId()
     {
         return id;
     }
 
-    public void setId(int id)
+    public void setId(Integer id)
     {
         this.id = id;
     }

@@ -1,0 +1,9 @@
+<div>
+    <span ng-if="recordPage.error == 'unique'">City and date pair should be unique</span>
+    <form name="recordForm" novalidate>
+        City: <xx-city-selector value="recordPage.record.city"></xx-city-selector><br/>
+        Date: <input type="date" ng-model="recordPage.record.date" required="required"/><br/>
+        Temperature: <input type="number" ng-model="recordPage.record.temperature" required="required"/><br/>
+        <button type="button" ng-disabled="recordForm.$invalid" ng-click="recordPage.submit()">Submit</button>
+    </form>
+</div>

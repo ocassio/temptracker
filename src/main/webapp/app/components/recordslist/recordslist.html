@@ -1,0 +1,5 @@
+<div>
+    <xx-record ng-repeat="record in recordsList.records | orderBy : recordsList.getDate : true"
+               record="record" delete="recordsList.onRecordDelete(id)">
+    </xx-record>
+</div>

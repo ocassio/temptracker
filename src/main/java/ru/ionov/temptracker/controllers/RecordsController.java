@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/records")
+@RequestMapping("/api/records")
 public class RecordsController
 {
     private static final String ERROR_KEY = "error";
@@ -39,8 +39,8 @@ public class RecordsController
     @InitBinder
     public void initBinder(WebDataBinder binder)
     {
-        CustomDateEditor editor = new CustomDateEditor(new SimpleDateFormat(dateFormat), true);
-        binder.registerCustomEditor(Date.class, editor);
+        CustomDateEditor dateEditor = new CustomDateEditor(new SimpleDateFormat(dateFormat), true);
+        binder.registerCustomEditor(Date.class, dateEditor);
     }
 
     @RequestMapping
@@ -57,11 +57,17 @@ public class RecordsController
             return city.getRecords();
         }
 
-        return new ArrayList<Record>();
+        return new ArrayList<>();
+    }
+
+    @RequestMapping("/{id}")
+    public Record getRecord(@PathVariable("id") int id)
+    {
+        return recordsRepository.findOne(id);
     }
 
     @RequestMapping(value = "/addOrUpdate", method = {RequestMethod.POST, RequestMethod.PUT})
-    public Map<String, Object> addOrUpdateRecord(@ModelAttribute Record record)
+    public Map<String, Object> addOrUpdateRecord(@RequestBody Record record)
     {
         Map<String, Object> result = new HashMap<>();
 
@@ -75,7 +81,10 @@ public class RecordsController
             {
                 result.put(ERROR_KEY, UNIQUE_ERROR_CODE);
             }
-            result.put(ERROR_KEY, INTEGRITY_ERROR_CODE);
+            else
+            {
+                result.put(ERROR_KEY, INTEGRITY_ERROR_CODE);
+            }
         }
 
         return result;

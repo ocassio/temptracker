@@ -10,6 +10,7 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <sonar.exlusions>src/main/webapp/bower_components, src/main/webapp/node_modules</sonar.exlusions>
     </properties>
 
     <parent>
