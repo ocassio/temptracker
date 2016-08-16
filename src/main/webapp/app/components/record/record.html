@@ -1,7 +1,12 @@
-<div>
-    City: {{record.city.name}} <br>
-    Date: {{record.date}} <br>
-    Temperature: {{record.temperature}} <br>
-    <a ui-sref="edit({id: record.id})">Edit</a>
-    <button type="button" ng-click="delete({id: record.id})">Delete</button>
+<div class="record">
+    <div class="temperature">
+        {{record.temperature}}&deg;C
+    </div>
+    <div class="date">
+        {{record.date}}
+    </div>
+    <div class="buttons">
+        <button class="button-primary" type="button" ui-sref="edit({id: record.id})">Edit</button>
+        <button class="button-danger" type="button" ng-click="delete({id: record.id})">Delete</button>
+    </div>
 </div>

@@ -1,0 +1,60 @@
+$record-circle-radius: 250px;
+$translation: 20px;
+$translation-duration: .3s;
+
+.record {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: $record-circle-radius;
+    height: $record-circle-radius;
+    border-radius: $record-circle-radius;
+
+    background: $color-background-light;
+    box-shadow: 4px 4px 6px #d0d0d0;
+
+    transition: all .3s ease-out;
+
+    &:hover {
+        box-shadow: 8px 8px 12px #d0d0d0;
+
+        & > .temperature {
+            transform: translateY(-10px);
+        }
+
+        & > .date {
+            transform: translateY(-10px);
+        }
+
+        & > .buttons {
+            opacity: 1;
+        }
+    }
+
+    .temperature {
+        cursor: default;
+        color: $color-accent-base;
+        font-size: 64px;
+        font-weight: 100;
+        transition: all $translation-duration ease-out;
+        transform: translateY($translation);
+    }
+
+    .date {
+        cursor: default;
+        color: $color-foreground-base;
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 16px;
+        transition: all $translation-duration ease-out;
+        transform: translateY($translation);
+    }
+
+    .buttons {
+        margin-top: 10px;
+        opacity: 0;
+        transition: all .1s ease-out;
+    }
+}

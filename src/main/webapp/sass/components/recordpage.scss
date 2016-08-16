@@ -1,0 +1,50 @@
+.record-form {
+    max-width: 600px;
+    padding: 16px;
+    margin: auto;
+
+    background: $color-background-light;
+    box-shadow: 4px 4px 6px #d0d0d0;
+    border-radius: 3px;
+
+    overflow: auto;
+
+    label {
+        display: block;
+    }
+
+    .label {
+        float: left;
+        width: 20%;
+        padding-right: 10px;
+        margin-top: 10px;
+
+        text-align: right;
+        font-weight: 300;
+        color: $color-foreground-base;
+    }
+
+    .field {
+        float: left;
+        height: 30px;
+        width: 79%;
+        padding: 3px 3px 3px 5px;
+        margin-bottom: 16px;
+        margin-top: 2px;
+
+        border: 1px solid $color-foreground-base;
+        border-radius: 3px;
+        outline: 0 none;
+
+        font-size: 16px;
+        line-height: 20px;
+
+        &:focus {
+            border: 1px solid $color-accent-base;
+        }
+    }
+
+    .button {
+        float: right;
+    }
+}

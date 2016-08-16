@@ -4,6 +4,8 @@ var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
 var ngAnnotate = require('gulp-ng-annotate');
 var embedTemplates = require('gulp-angular-embed-templates');
+var sass = require('gulp-sass');
+var autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('js-libs', function () {
     var files = [
@@ -34,4 +36,18 @@ gulp.task('js', function () {
         .pipe(gulp.dest('./dist/js'))
 });
 
-gulp.task('default', ['js-libs', 'js']);
+gulp.task('sass', function () {
+    return gulp.src('./sass/main.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(autoprefixer())
+        .pipe(gulp.dest('./dist/css'));
+});
+
+gulp.task('build', ['js-libs', 'js', 'sass']);
+
+gulp.task('watch', function () {
+    gulp.watch('./app/**/*', ['js']);
+    gulp.watch('./sass/**/*.scss', ['sass']);
+});
+
+gulp.task('default', ['build', 'watch']);

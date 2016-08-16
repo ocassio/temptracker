@@ -1,0 +1,11 @@
+.records-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    width: 100%;
+
+    .record {
+        margin: 16px;
+    }
+}
