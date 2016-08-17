@@ -155,6 +155,8 @@ coverage
 build/Release
 
 # Dependency directories
+node
+etc
 node_modules
 jspm_packages
 
