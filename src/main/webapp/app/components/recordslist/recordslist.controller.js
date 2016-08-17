@@ -14,11 +14,10 @@
         vm.getDate = getDate;
         vm.onRecordDelete = onRecordDelete;
 
-        loadRecords($scope.city);
-
         $scope.$watch('city', loadRecords);
 
         function loadRecords(city) {
+            if (!city) return;
             var cityId = city ? city.id : null;
             recordsService.getRecords(cityId).success(onRecordsLoaded);
         }

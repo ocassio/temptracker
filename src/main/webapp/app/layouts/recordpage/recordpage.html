@@ -1,29 +1,24 @@
-<div>
-    <span ng-if="recordPage.error == 'unique'">City and date pair should be unique</span>
+<div class="record-form">
     <form name="recordForm" novalidate>
-        City: <xx-city-selector value="recordPage.record.city"></xx-city-selector><br/>
-        Date: <input type="date" ng-model="recordPage.record.date" required="required"/><br/>
-        Temperature: <input type="number" ng-model="recordPage.record.temperature" required="required"/><br/>
-        <button type="button" ng-disabled="recordForm.$invalid" ng-click="recordPage.submit()">Submit</button>
+        <label>
+            <span class="label">City</span>
+            <xx-city-selector value="recordPage.record.city"></xx-city-selector>
+        </label>
+        <label>
+            <span class="label">Date</span>
+            <datepicker date-format="dd.MM.yyyy">
+                <input ng-model="recordPage.record.date" class="field" name="date" type="text" required="required"/>
+            </datepicker>
+        </label>
+        <label>
+            <span class="label">Temperature</span>
+            <input class="field" type="number" name="temperature" ng-maxlength="3"
+                   ng-model="recordPage.record.temperature" required="required" />
+        </label>
+        <button class="button-primary" type="button" ng-disabled="recordForm.$invalid || recordPage.disableButton"
+                ng-click="recordPage.submit()">
+            Submit
+        </button>
+        <span class="error-message" ng-if="recordPage.error == 'unique'">City and date pair should be unique</span>
     </form>
 </div>
-
-<!--<div class="record-form">-->
-    <!--<form>-->
-        <!--<span ng-if="recordPage.error == 'unique'">City and date pair should be unique</span>-->
-        <!--<label>-->
-            <!--<span class="label">City</span>-->
-            <!--&lt;!&ndash;<input class="field" type="text" name="city" />&ndash;&gt;-->
-            <!--<xx-city-selector value="recordPage.record.city"></xx-city-selector>-->
-        <!--</label>-->
-        <!--<label>-->
-            <!--<span class="label">Date</span>-->
-            <!--<input class="field" type="text" name="date" ng-model="recordPage.record.date" required="required" />-->
-        <!--</label>-->
-        <!--<label>-->
-            <!--<span class="label">Temperature</span>-->
-            <!--<input class="field" type="number" name="temperature" ng-model="recordPage.record.temperature" required="required" />-->
-        <!--</label>-->
-        <!--<button class="button-primary" type="button" ng-disabled="recordForm.$invalid" ng-click="recordPage.submit()">Submit</button>-->
-    <!--</form>-->
-<!--</div>-->

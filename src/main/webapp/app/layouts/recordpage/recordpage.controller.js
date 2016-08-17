@@ -12,15 +12,15 @@
         var vm = this;
         vm.record = {};
         vm.cities = [];
+        vm.disableButton = false;
         vm.submit = submit;
 
         init();
 
         function submit() {
+            vm.disableButton = true;
             vm.error = null;
-            var data = angular.copy(vm.record);
-            data.date = moment(data.date).format(DATE_FORMAT);
-            recordsService.addOrUpdateRecord(data).success(onSubmitted);
+            recordsService.addOrUpdateRecord(vm.record).success(onSubmitted);
         }
 
         function onSubmitted(response) {
@@ -29,6 +29,7 @@
             } else {
                 vm.error = response.error;
             }
+            vm.disableButton = false;
         }
 
         function init() {
@@ -38,9 +39,7 @@
         }
 
         function onRecordLoaded(response) {
-            var record = response;
-            record.date = moment(record.date, DATE_FORMAT).toDate();
-            vm.record = record;
+            vm.record = response;
         }
     }
 

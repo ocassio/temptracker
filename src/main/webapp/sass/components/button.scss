@@ -37,10 +37,10 @@
 
 .button-primary {
     @extend .button;
-    @include colored-button(#673AB7);
+    @include colored-button($color-primary);
 }
 
 .button-danger {
     @extend .button;
-    @include colored-button(#F44336);
+    @include colored-button($color-danger);
 }

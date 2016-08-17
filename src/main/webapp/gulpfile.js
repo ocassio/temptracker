@@ -11,7 +11,8 @@ gulp.task('js-libs', function () {
     var files = [
         './bower_components/angular/angular.min.js',
         './bower_components/angular-ui-router/release/angular-ui-router.min.js',
-        './bower_components/moment/min/moment.min.js'
+        './bower_components/moment/min/moment.min.js',
+        './bower_components/angularjs-datepicker/dist/angular-datepicker.min.js'
     ];
     return gulp.src(files)
         .pipe(sourcemaps.init())
@@ -36,6 +37,15 @@ gulp.task('js', function () {
         .pipe(gulp.dest('./dist/js'))
 });
 
+gulp.task('css-libs', function () {
+    var files = [
+        './bower_components/angularjs-datepicker/dist/angular-datepicker.min.css'
+    ];
+    return gulp.src(files)
+        .pipe(concat('libs.css'))
+        .pipe(gulp.dest('./dist/css'));
+});
+
 gulp.task('sass', function () {
     return gulp.src('./sass/main.scss')
         .pipe(sass().on('error', sass.logError))
@@ -43,7 +53,7 @@ gulp.task('sass', function () {
         .pipe(gulp.dest('./dist/css'));
 });
 
-gulp.task('build', ['js-libs', 'js', 'sass']);
+gulp.task('build', ['js-libs', 'js', 'css-libs', 'sass']);
 
 gulp.task('watch', function () {
     gulp.watch('./app/**/*', ['js']);
