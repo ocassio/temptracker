@@ -11,7 +11,7 @@
             restrict: 'E',
             controller: 'CitySelectorController',
             controllerAs: 'citySelector',
-            templateUrl: 'citySelector.html',
+            templateUrl: 'cityselector.html',
             scope: {
                 value: '='
             }
