@@ -1,3 +1,5 @@
+language: java
+script: mvn clean install
 deploy:
   provider: openshift
   user: orlicus@gmail.com
